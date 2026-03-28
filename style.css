@@ -112,24 +112,31 @@ body {
 /* Theme bar */
 #theme-bar {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: center;
+  align-items: center;
+  padding: 2px 0;
 }
 
 .theme-btn {
-  flex: 1;
-  padding: 7px 0;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  background: var(--surface);
-  font-size: 1.1rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: transform 0.15s, border-color 0.15s;
+  padding: 0;
 }
 
+.theme-btn[data-theme="ocean"]    { background: #4a90d9; }
+.theme-btn[data-theme="forest"]   { background: #4caf50; }
+.theme-btn[data-theme="sunset"]   { background: #ffa040; }
+.theme-btn[data-theme="lavender"] { background: #9c27b0; }
+.theme-btn[data-theme="midnight"] { background: #00e5ff; }
+
 .theme-btn.active {
-  border-color: var(--accent2);
-  background: var(--card);
+  border-color: var(--text);
+  transform: scale(1.25);
 }
 
 /* Header */
