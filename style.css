@@ -248,7 +248,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(6px, 1.5vw, 9px);
+  font-size: clamp(8px, 2vw, 12px);
   color: var(--note-color);
   font-weight: 500;
 }
