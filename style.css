@@ -17,6 +17,66 @@
   --note-color: #7eb8f7;
 }
 
+/* ── Ocean (default) ── */
+[data-theme="ocean"] {
+  --bg: #1a1a2e; --surface: #16213e; --card: #0f3460;
+  --accent: #e94560; --accent2: #4a90d9;
+  --text: #eaeaea; --text-muted: #8892a4;
+  --cell-bg: #1e2a45; --cell-border: #2a3a5c;
+  --cell-given: #c8d8f0; --cell-user: #7eb8f7;
+  --cell-error: #e94560; --cell-selected: #4a90d9;
+  --cell-related: #253555; --cell-same: #2d4470;
+  --note-color: #7eb8f7;
+}
+
+/* ── Forest ── */
+[data-theme="forest"] {
+  --bg: #0d1f0f; --surface: #142b16; --card: #1b3d1e;
+  --accent: #f4845f; --accent2: #4caf50;
+  --text: #e8f5e9; --text-muted: #81a784;
+  --cell-bg: #162a18; --cell-border: #2e5230;
+  --cell-given: #c8e6c9; --cell-user: #80c784;
+  --cell-error: #f4845f; --cell-selected: #4caf50;
+  --cell-related: #1c3a1e; --cell-same: #254d28;
+  --note-color: #80c784;
+}
+
+/* ── Sunset ── */
+[data-theme="sunset"] {
+  --bg: #1c0a00; --surface: #2d1200; --card: #3d1a00;
+  --accent: #ff6b6b; --accent2: #ffa040;
+  --text: #fff3e0; --text-muted: #bf8b60;
+  --cell-bg: #2a1400; --cell-border: #4a2800;
+  --cell-given: #ffe0b2; --cell-user: #ffb74d;
+  --cell-error: #ff6b6b; --cell-selected: #ffa040;
+  --cell-related: #331800; --cell-same: #3d2200;
+  --note-color: #ffb74d;
+}
+
+/* ── Lavender ── */
+[data-theme="lavender"] {
+  --bg: #f3f0f9; --surface: #e8e0f5; --card: #d8ccee;
+  --accent: #9c27b0; --accent2: #7b5ea7;
+  --text: #2d1b4e; --text-muted: #7a6898;
+  --cell-bg: #ede7f6; --cell-border: #c5b8e0;
+  --cell-given: #2d1b4e; --cell-user: #6a3d9a;
+  --cell-error: #d32f2f; --cell-selected: #7b5ea7;
+  --cell-related: #ddd5f0; --cell-same: #d0c4e8;
+  --note-color: #6a3d9a;
+}
+
+/* ── Midnight ── */
+[data-theme="midnight"] {
+  --bg: #000000; --surface: #111111; --card: #1a1a1a;
+  --accent: #00e5ff; --accent2: #00bcd4;
+  --text: #e0e0e0; --text-muted: #616161;
+  --cell-bg: #0d0d0d; --cell-border: #222222;
+  --cell-given: #e0e0e0; --cell-user: #00e5ff;
+  --cell-error: #ff1744; --cell-selected: #00bcd4;
+  --cell-related: #141414; --cell-same: #1a1a1a;
+  --note-color: #00e5ff;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -47,6 +107,29 @@ body {
   padding: 0 12px;
   gap: 8px;
   justify-content: center;
+}
+
+/* Theme bar */
+#theme-bar {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.theme-btn {
+  flex: 1;
+  padding: 7px 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-btn.active {
+  border-color: var(--accent2);
+  background: var(--card);
 }
 
 /* Header */

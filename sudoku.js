@@ -375,7 +375,24 @@ document.addEventListener('keydown', e => {
 });
 
 // ============================================================
+// Theme
+// ============================================================
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  document.querySelectorAll('.theme-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.theme === theme);
+  });
+  localStorage.setItem('sudoku-theme', theme);
+}
+
+document.querySelectorAll('.theme-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyTheme(btn.dataset.theme));
+});
+
+// ============================================================
 // Init
 // ============================================================
 
+applyTheme(localStorage.getItem('sudoku-theme') || 'ocean');
 newGame('easy');
