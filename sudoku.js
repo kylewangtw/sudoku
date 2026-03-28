@@ -259,14 +259,30 @@ function inputNumber(n) {
       notes.has(n) ? notes.delete(n) : notes.add(n);
     }
   } else {
-    state.board[r][c] = state.board[r][c] === n ? 0 : n;
+    const prev = state.board[r][c];
+    state.board[r][c] = prev === n ? 0 : n;
     state.notes[r][c].clear();
+    if (state.board[r][c] !== 0) {
+      clearRelatedNotes(r, c, state.board[r][c]);
+      renderRelatedCells(r, c);
+    }
     checkWin();
   }
 
   renderCell(r, c);
   renderHighlights();
   updateNumpadCompleted();
+}
+
+function renderRelatedCells(r, c) {
+  const br = Math.floor(r / 3) * 3, bc = Math.floor(c / 3) * 3;
+  for (let i = 0; i < 9; i++) {
+    if (i !== c) renderCell(r, i);
+    if (i !== r) renderCell(i, c);
+  }
+  for (let i = 0; i < 3; i++)
+    for (let j = 0; j < 3; j++)
+      if (br + i !== r || bc + j !== c) renderCell(br + i, bc + j);
 }
 
 function eraseCell() {
@@ -286,11 +302,24 @@ function giveHint() {
   if (state.given[r][c] || state.board[r][c] === state.solution[r][c]) return;
   state.board[r][c] = state.solution[r][c];
   state.notes[r][c].clear();
+  clearRelatedNotes(r, c, state.board[r][c]);
+  renderRelatedCells(r, c);
   state.hintsUsed++;
   renderCell(r, c);
   renderHighlights();
   updateNumpadCompleted();
   checkWin();
+}
+
+function clearRelatedNotes(r, c, n) {
+  const br = Math.floor(r / 3) * 3, bc = Math.floor(c / 3) * 3;
+  for (let i = 0; i < 9; i++) {
+    state.notes[r][i].delete(n);   // same row
+    state.notes[i][c].delete(n);   // same col
+  }
+  for (let i = 0; i < 3; i++)
+    for (let j = 0; j < 3; j++)
+      state.notes[br + i][bc + j].delete(n); // same box
 }
 
 function checkWin() {
