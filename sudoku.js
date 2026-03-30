@@ -293,6 +293,7 @@ function giveHint() {
   const [r, c] = state.selected;
   if (state.given[r][c] || state.board[r][c] === state.solution[r][c]) return;
   state.board[r][c] = state.solution[r][c];
+  state.given[r][c] = true;
   state.notes[r][c].clear();
   clearRelatedNotes(r, c, state.board[r][c]);
   renderRelatedCells(r, c);
