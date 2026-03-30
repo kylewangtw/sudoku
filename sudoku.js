@@ -174,15 +174,7 @@ function renderCell(r, c) {
 }
 
 function isValidPlacement(r, c, val) {
-  for (let i = 0; i < 9; i++) {
-    if (i !== c && state.board[r][i] === val) return false;
-    if (i !== r && state.board[i][c] === val) return false;
-  }
-  const br = Math.floor(r / 3) * 3, bc = Math.floor(c / 3) * 3;
-  for (let i = 0; i < 3; i++)
-    for (let j = 0; j < 3; j++)
-      if ((br+i !== r || bc+j !== c) && state.board[br+i][bc+j] === val) return false;
-  return true;
+  return val === state.solution[r][c];
 }
 
 function renderHighlights() {
