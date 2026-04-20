@@ -1,5 +1,10 @@
-const CACHE = 'sudoku-v8';
-const ASSETS = ['./', './index.html', './style.css', './sudoku.js', './manifest.json', './icons/icon-192.png', './icons/icon-512.png'];
+const CACHE = 'sudoku-v9';
+const ASSETS = [
+  './', './index.html', './style.css', './manifest.json',
+  './icons/icon-192.png', './icons/icon-512.png',
+  './src/theme.js', './src/engine.js',
+  './src/board.jsx', './src/controls.jsx', './src/reducer.jsx', './src/screens.jsx',
+];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));

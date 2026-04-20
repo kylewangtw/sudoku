@@ -4,8 +4,8 @@
   "description": "手機版數獨遊戲",
   "start_url": "/sudoku/",
   "display": "standalone",
-  "background_color": "#1a1a2e",
-  "theme_color": "#1a1a2e",
+  "background_color": "#fff3e6",
+  "theme_color": "#fff3e6",
   "orientation": "portrait",
   "icons": [
     {
